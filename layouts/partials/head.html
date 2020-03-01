@@ -6,6 +6,7 @@
 {{ end }}
 
 {{ if .Description }}<meta name="description" content="{{ .Description | safeHTML }}" />
+{{ else if .Summary }}<meta name="description" content="{{ .Summary | safeHTML }}" />
 {{ else }}<meta name="description" content="{{ .Site.Params.description | safeHTML }}" />
 {{ end }}
 
@@ -37,6 +38,9 @@
 
 {{ if .IsHome }}<meta property="og:type" content="website" />{{ else }}<meta property="og:type" content="article" />{{ end }}
 {{ with .Title }}<meta property="og:title" content="{{ . }} {{if $.IsHome}}- {{ $.Site.Params.slogan | default "" | safeHTML }}{{ end }}" />{{ end }}
-{{ if .Description }}<meta property="og:description" content="{{ .Description }}" />{{ else }}<meta property="og:description" content="{{ .Site.Params.Description | safeHTML }}" />{{ end }}
+{{ if .Description }}<meta property="og:description" content="{{ .Description }}" />
+{{ else if .Summary }}<meta property="og:description" content="{{ .Summary }}" />
+{{ else }}<meta property="og:description" content="{{ .Site.Params.Description | safeHTML }}" />
+{{ end }}
 <meta property="og:site_name" content="{{ .Site.Title }}" />
 {{ if and (isset .Params "image") .Params.image }}<meta property="og:image" content="{{ .Params.image | absURL }}" />{{end}}
