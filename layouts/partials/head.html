@@ -29,7 +29,7 @@
 <link href="{{ .RelPermalink }}" rel="feed" type="application/rss+xml" title="{{ $.Site.Title | default "" }}" />
   {{ end }}
 {{ end }}
-{{ template "_internal/google_analytics_async.html" . }}
+{{ template "_internal/google_analytics.html" . }}
 {{ with .OutputFormats.Get "HTML" }}
   {{ if .RelPermalink }}
 <meta property="og:url" content="{{ .RelPermalink | absURL }}" />
